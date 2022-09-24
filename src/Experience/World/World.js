@@ -3,6 +3,7 @@ import Environment from './Environment.js'
 import Floor from './Floor.js'
 import Fox from './Fox.js'
 import TV from './Tv.js'
+import Room from './Room.js'
 
 export default class World
 {
@@ -11,7 +12,6 @@ export default class World
         this.experience = new Experience()
         this.scene = this.experience.scene
         this.resources = this.experience.resources
-
         // Wait for resources
         this.resources.on('ready', () =>
         {
@@ -20,12 +20,14 @@ export default class World
             //this.fox = new Fox()
             this.tv = new TV()
             this.environment = new Environment()
+            this.room = new Room()
+
         })
     }
 
     update()
     {
-        if(this.fox)
-            this.fox.update()
+        if(this.tv)
+            this.tv.update()
     }
 }
